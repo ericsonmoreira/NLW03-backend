@@ -14,11 +14,14 @@ export class Orphanages {
   @Column({ type: 'decimal', scale: 10, precision: 2 })
   longitude: number;
 
-  @Column()
+  @Column({ type: 'text' })
   about: string;
 
-  @Column()
+  @Column({ type: 'text' })
   instructions: string;
+
+  @Column()
+  opening_hours: string;
 
   @Column({ default: false })
   open_on_week: boolean;
