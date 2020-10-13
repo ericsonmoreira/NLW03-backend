@@ -1,13 +1,14 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response } from 'express';
+import './database/connection';
 
 const app = express();
 
 app.use(express.json());
 
-app.get("/", (request: Request, response: Response) => {
-  response.json({ mesage: "Ola mundo" });
+app.get('/', (request: Request, response: Response) => {
+  response.json({ mesage: 'Ola mundo' });
 });
 
 app.listen(3333, () => {
-  console.log("Online in http://localhost:3333/");
+  console.log('Online in http://localhost:3333/');
 });
