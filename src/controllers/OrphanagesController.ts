@@ -8,21 +8,19 @@ export default {
     const repository = getRepository(Orphanage);
 
     const orphanages = await repository.find({ relations: ['images'] });
-    
+
     return response.json(orphanageView.renderMany(orphanages));
   },
   async show(request: Request, response: Response) {
-    try {
-      const { id } = request.params;
-      const repository = getRepository(Orphanage);
-      const orphanage = await repository.findOneOrFail(id, {
-        relations: ['images'],
-      });
-      return response.json(orphanageView.render(orphanage));
-    } catch (error) {
-      const { message } = error;
-      return response.status(202).json({ message });
-    }
+    const { id } = request.params;
+
+    const repository = getRepository(Orphanage);
+    
+    const orphanage = await repository.findOneOrFail(id, {
+      relations: ['images'],
+    });
+    
+    return response.json(orphanageView.render(orphanage));
   },
   async create(request: Request, response: Response) {
     const resquestImages = request.files as Express.Multer.File[];
