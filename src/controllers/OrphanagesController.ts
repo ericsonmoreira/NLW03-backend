@@ -1,17 +1,17 @@
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
-import { Orphanages } from '../database/entities/Orphanages';
+import { Orphanage } from '../database/entities/Orphanage';
 
 export default {
   async index(request: Request, response: Response) {
-    const repository = getRepository(Orphanages);
+    const repository = getRepository(Orphanage);
     const orphanages = await repository.find();
     return response.json(orphanages);
   },
   async show(request: Request, response: Response) {
     try {
       const { id } = request.params;
-      const repository = getRepository(Orphanages);
+      const repository = getRepository(Orphanage);
       const orphanage = await repository.findOneOrFail(id);
       return response.json(orphanage);
     } catch (error) {
@@ -20,7 +20,7 @@ export default {
     }
   },
   async create(request: Request, response: Response) {
-    const repository = getRepository(Orphanages);
+    const repository = getRepository(Orphanage);
     const orphanage = repository.create(request.body);
     await repository.save(orphanage);
     return response.status(201).json(orphanage);
