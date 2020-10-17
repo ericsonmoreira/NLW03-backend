@@ -59,13 +59,13 @@ export default {
     });
 
     const data = {
-      name,
-      latitude,
-      longitude,
-      about,
-      instructions,
-      opening_hours,
-      open_on_week: open_on_week === 'true', // está vindo como uma String
+      name: String(name),
+      latitude: Number(latitude),
+      longitude: Number(longitude),
+      about: String(about),
+      instructions: String(instructions),
+      opening_hours: String(opening_hours),
+      open_on_week: open_on_week === 'true',
       images,
     };
 
