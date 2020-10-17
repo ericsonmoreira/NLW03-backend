@@ -65,7 +65,7 @@ export default {
       about,
       instructions,
       opening_hours,
-      open_on_week,
+      open_on_week: open_on_week === 'true', // está vindo como uma String
       images,
     };
 
