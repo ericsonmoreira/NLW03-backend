@@ -118,5 +118,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# 
-src/database/*.sqlite
+# arquivos do sqlite
+*.sqlite
